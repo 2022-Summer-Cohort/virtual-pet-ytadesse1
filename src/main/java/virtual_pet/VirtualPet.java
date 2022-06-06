@@ -9,11 +9,6 @@ public class VirtualPet {
     private int thirstLvl;
     private int boredomLvl;
 
-    private int foodInFridge;
-    private int keys;
-    private int phone;
-    private int life;
-
     // Constructors
     public VirtualPet(String name, int hungerLvl, int urgeToSteal, int thirstLvl, int boredomLvl) {
         this.name = name;
@@ -21,11 +16,8 @@ public class VirtualPet {
         this.urgeToSteal = urgeToSteal;
         this.thirstLvl = thirstLvl;
         this.boredomLvl = boredomLvl;
-        this.foodInFridge = foodInFridge;
-        this.keys = keys;
-        this.phone = phone;
-        this.life = life;
     }
+
     // Getters
     public String getName() {
         return name;
@@ -48,21 +40,19 @@ public class VirtualPet {
     }
 
     public void greeting() {
-        System.out.println(name + "'s " + "hunger level is " + hungerLvl + ", his level of urgency is steal is at a " +
-                urgeToSteal + ", his thirst level is a " + thirstLvl + ", and his boredom level is level "
-                + boredomLvl + ".");
+        System.out.println(name + "'s " + "hunger level is " + hungerLvl + ", his level of urgency to steal is at a " + urgeToSteal + ", his thirst level is a " + thirstLvl + ", and his boredom level is level " + boredomLvl + ".");
     }
 
     public void feed() {
-        hungerLvl = -1;
+        hungerLvl = Math.max(0, hungerLvl-4);
     }
 
     public void water() {
-        thirstLvl = -1;
+        thirstLvl = Math.max(0, thirstLvl-4);
     }
 
     public void play() {
-        boredomLvl = -1;
+        boredomLvl = Math.max(0, boredomLvl-4);
     }
 
     public void tick() {
@@ -71,43 +61,13 @@ public class VirtualPet {
         boredomLvl++;
     }
 
-    // Setters
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setHungerLvl(int hungerLvl) {
-        this.hungerLvl = hungerLvl;
-    }
-
-    public void setUrgeToSteal(int urgeToSteal) {
-        this.urgeToSteal = urgeToSteal;
-    }
-
-    public void setThirstLvl(int thirstLvl) {
-        this.thirstLvl = thirstLvl;
-    }
-
-    public void setBoredomLvl(int boredomLvl) {
-        this.boredomLvl = boredomLvl;
-    }
-
-
-    // if statements
-    if (hungerLvl > 5) {
-        urgeToSteal++;
-    }
-
-    if (thirstLvl > 5) {
-        urgeToSteal++;
-    }
-
-    if (boredomLvl > 5) {
-        urgeToSteal++;
-    }
-
-    if (urgeToSteal > 10) {
-        System.out.println("Pluto has gone crazy.");
+    public boolean isAlive() {
+        if (hungerLvl > 10) {
+            return false;
+        } else if (thirstLvl > 10){
+            return false;
+        } else {
+            return true;
+        }
     }
 }
