@@ -1,13 +1,13 @@
 package virtual_pet;
 
-public class VirtualPet {
-    private String name;
+public abstract class VirtualPet {
+    private static String name;
 
-    private int hungerLvl;
+    private static int hungerLvl;
 
-    private int urgeToSteal;
-    private int thirstLvl;
-    private int boredomLvl;
+    private static int urgeToSteal;
+    private static int thirstLvl;
+    private static int boredomLvl;
 
     // Constructors
     public VirtualPet(String name, int hungerLvl, int urgeToSteal, int thirstLvl, int boredomLvl) {
@@ -39,8 +39,8 @@ public class VirtualPet {
         return boredomLvl;
     }
 
-    public void greeting() {
-        System.out.println(name + "'s " + "hunger level is " + hungerLvl + ", his level of urgency to steal is at a " + urgeToSteal + ", his thirst level is a " + thirstLvl + ", and his boredom level is level " + boredomLvl + ".");
+    public static void greeting() {
+        System.out.println(name + "'s " + "hunger level is " + hungerLvl + ", his level of urgency to steal is at a " + urgeToSteal + ", his thirst level is a " + thirstLvl + ", his boredom level is a " + boredomLvl + ".");
     }
 
     public void feed() {

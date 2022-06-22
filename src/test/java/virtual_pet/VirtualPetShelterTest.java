@@ -1,31 +1,34 @@
 package virtual_pet;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class VirtualPetShelterTest {
     @Test
-    public void canAdmitPetToShelter() {
+            public void allPetsBeingFed() {
         VirtualPetShelter underTest = new VirtualPetShelter();
-        underTest.admitPet("David");
-        assertTrue(underTest.findPetByName("David") != null);
+        underTest.feedAll();
+        assertEquals(3,3);
+
+    }
+
+
+    @Test
+            public void shelterCleansLitterBox() {
+        VirtualPetShelter underTest = new VirtualPetShelter();
+        underTest.cleanLitterBox();
+        assertEquals(5, 7);
+
     }
 
     @Test
-    public void canAdoptPetFromShelter() {
+            public void shelterCleansCage() {
         VirtualPetShelter underTest = new VirtualPetShelter();
-        underTest.admitPet("Mo");
-        assertTrue(underTest.findPetByName("Mo") != null);
-        underTest.adoptPet("Adam");
-        assertTrue(underTest.findPetByName("Adam") == null);
+        underTest.cleanCage();
+        assertEquals(3, 3);
     }
 
-    @Test
-    public void populationMatchesShelterArrayList() {
-        VirtualPetShelter underTest = new VirtualPetShelter();
-        underTest.shelterPopulation();
-        assertEquals(2, underTest.shelterPopulation());
-    }
 }
