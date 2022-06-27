@@ -7,11 +7,18 @@ public class VirtualPetShelter {
 
     public VirtualPetShelter() {
         shelter = new ArrayList<>();
-        shelter.add(new RoboticDog("Ricky", 3, 2, 5, 7, 2, 4));
-        shelter.add(new RoboticCat("Lizzo", 2, 7, 8, 3, 6, 3));
-        shelter.add(new OrganicCat("Paco", 3, 2, 5, 7, 2));
-        shelter.add(new OrganicDog("Cash", 2, 7, 8, 3, 4));
+
+//        RoboticDog robotDog = new RoboticDog("Cash", 3, 2, 3, 7, 2);
+//        RoboticCat robotCat = new RoboticCat("Eddy", 2, 7, 4, 3, 6);
+//        OrganicDog organDog = new OrganicDog("Paco", 3, 2, 5, 7);
+//        OrganicCat organCat = new OrganicCat("Jack", 3, 2, 7, 7);
+//
+//        admitPet(robotDog);
+//        admitPet(robotCat);
+//        admitPet(organDog);
+//        admitPet(organCat);
     }
+
 
     public int shelterPopulation() {
         return shelter.size();

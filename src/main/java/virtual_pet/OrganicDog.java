@@ -3,8 +3,8 @@ package virtual_pet;
 public class OrganicDog extends OrganicPet implements Walking {
 
 
-    public OrganicDog(String name, int hungerLvl, int urgeToSteal, int thirstLvl, int boredomLvl, int cleanliness) {
-        super(name, hungerLvl, urgeToSteal, thirstLvl, boredomLvl, cleanliness);
+    public OrganicDog(String name, int hungerLvl, int thirstLvl, int boredomLvl, int cleanliness) {
+        super(name, hungerLvl, thirstLvl, boredomLvl, cleanliness);
     }
 
     @Override
@@ -15,7 +15,13 @@ public class OrganicDog extends OrganicPet implements Walking {
     }
 
     @Override
-    public void showStatus() {
-        System.out.println("my name" + getName() + "hunger" + "hungerLevel" + "boredom" + "boredomLevel" + "thirst" + "thirstLevel" + "my litterbox is" + cleanliness);
+    public void greeting() {
+        System.out.println(getName() + "'s " + "hunger level is " + getHungerLvl() + ", his thirst level is a " + getThirstLvl()
+                + ", his boredom level is a " + getBoredomLvl() + ", cage cleanliness is " + getCleanliness() + ".");
+    }
+
+    @Override
+    public void cleanCage() {
+        cleanliness=10;
     }
 }

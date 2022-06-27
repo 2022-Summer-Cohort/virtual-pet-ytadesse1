@@ -1,14 +1,14 @@
 package virtual_pet;
 
-public class RoboticPet extends VirtualPet {
+public abstract class RoboticPet extends VirtualPet {
 
     protected int oilLevel;
 
     protected int maintenanceLevel;
 
 
-    public RoboticPet(String name, int hungerLvl, int urgeToSteal, int thirstLvl, int boredomLvl, int oilLevel, int maintenanceLevel) {
-        super(name, hungerLvl, urgeToSteal, thirstLvl, boredomLvl);
+    public RoboticPet(String name, int hungerLvl, int thirstLvl, int boredomLvl, int oilLevel, int maintenanceLevel) {
+        super(name, hungerLvl, thirstLvl, boredomLvl);
             this.oilLevel = oilLevel;
             this.maintenanceLevel = maintenanceLevel;
     }
@@ -20,6 +20,13 @@ public class RoboticPet extends VirtualPet {
         maintenanceLevel--;
     }
 
+    @Override
+    public void greeting() {
+        System.out.println(getName() + "'s " + "hunger level is " + getHungerLvl() + ", his thirst level is a " + getThirstLvl()
+                + ", his boredom level is a " + getBoredomLvl() + ", oil level is " + getOilLevel() + ", and the maintenance oil is " +
+                getMaintenanceLevel() + ".");
+    }
+
     public int getOilLevel() {
         return oilLevel;
     }
@@ -29,12 +36,14 @@ public class RoboticPet extends VirtualPet {
     }
 
     public void oilPet() {
-        oilLevel += 10;
+        oilLevel++;
     }
 
     public void maintainRobots() {
-        maintenanceLevel += 10;
+        maintenanceLevel++;
     }
+
+
 
 
 }

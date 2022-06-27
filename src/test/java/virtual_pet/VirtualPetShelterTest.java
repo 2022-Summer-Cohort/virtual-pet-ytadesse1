@@ -11,7 +11,7 @@ public class VirtualPetShelterTest {
             public void allPetsBeingFed() {
         VirtualPetShelter underTest = new VirtualPetShelter();
         underTest.feedAll();
-        assertEquals(3,3);
+        assertEquals(0, underTest.findPetByName("Paco").getHungerLvl());
 
     }
 
@@ -20,7 +20,7 @@ public class VirtualPetShelterTest {
             public void shelterCleansLitterBox() {
         VirtualPetShelter underTest = new VirtualPetShelter();
         underTest.cleanLitterBox();
-        assertEquals(5, 7);
+        assertEquals(5, underTest.);
 
     }
 

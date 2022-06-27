@@ -9,18 +9,24 @@ public class VirtualPetApplication {
 
         VirtualPetShelter shelter = new VirtualPetShelter();
 
-        shelter.admitPet(new RoboticDog("Paco", 3, 6, 4, 8, 4,2));
-        shelter.admitPet(new RoboticCat("Danny", 3, 6, 4, 8, 4,2));
-        shelter.admitPet(new OrganicDog("Roger", 3, 6, 4, 8, 4));
-        shelter.admitPet(new OrganicCat("Paco", 3, 6, 4, 8, 4));
+        RoboticDog robotDog = new RoboticDog("Cash", 3, 1, 3, 7, 2);
+        RoboticCat robotCat = new RoboticCat("Eddy", 2, 7, 4, 3, 6);
+        OrganicDog organDog = new OrganicDog("Paco", 6, 2, 5, 3);
+        OrganicCat organCat = new OrganicCat("Jack", 5, 5, 7, 4);
+
+        shelter.admitPet(robotDog);
+        shelter.admitPet(robotCat);
+        shelter.admitPet(organDog);
+        shelter.admitPet(organCat);
 
         String userInput = "";
         Scanner input = new Scanner(System.in);
 
-        while (shelter.isAllAlive() || userInput.equalsIgnoreCase("quit")) {
-            VirtualPet.greeting();
-            System.out.println("Type feed, water, play, adopt, clean cage, clean litter box, or interact " +
-                    "with pet.");
+        while (shelter.isAllAlive() && !userInput.equalsIgnoreCase("quit")) {
+            shelter.showAllPetStatus();
+            System.out.println("Type feed, water, play, adopt, admit, clean cage, clean litter box, or interact with a " +
+                    "pet. Type quit to end.");
+            System.out.println("Type 'clean organic dog cage' or 'clean organic cat litter box' for these two services specifically.");
             userInput = input.nextLine();
 
             switch (userInput.toLowerCase()) {
@@ -41,21 +47,23 @@ public class VirtualPetApplication {
                     shelter.adoptPet(input.nextLine());
                     break;
 
-//                case "admit":
-//                    System.out.println("Is your pet a robot or organic?");
-//                    shelter.admitPet(input.nextLine());
-//                    System.out.println("Is it a cat or dog?");
-//                    shelter.admitPet(input.nextLine());
-//                    if (userInput.equalsIgnoreCase("cat") && userInput.equalsIgnoreCase("robot")) {
-//                        shelter.admitPet(RoboticCat);
-//                    } else if (userInput.equalsIgnoreCase("cat") && userInput.equalsIgnoreCase("organic")) {
-//                        shelter.admitPet(OrganicCat);
-//                    } else if (userInput.equalsIgnoreCase("dog") && userInput.equalsIgnoreCase("robot")) {
-//                        shelter.admitPet(RoboticDog);
-//                    } else {
-//                        shelter.admitPet(OrganicDog);
-//                    }
-//                    break;
+                case "admit":
+                    System.out.println("What's your pet's name?");
+                    String petName = input.nextLine();
+                    System.out.println("Is your pet a robot or organic?");
+                    String petType = input.nextLine();
+                    System.out.println("Is it a cat or dog?");
+                    String animalType = input.nextLine();
+                    if (animalType.equalsIgnoreCase("cat") && petType.equalsIgnoreCase("robot")) {
+                        shelter.admitPet(new RoboticCat(petName, 5, 8, 2, 6, 8));
+                    } else if (animalType.equalsIgnoreCase("cat") && petType.equalsIgnoreCase("organic")) {
+                        shelter.admitPet(new OrganicCat(petName, 6, 3, 6, 3));
+                    } else if (animalType.equalsIgnoreCase("dog") && petType.equalsIgnoreCase("robot")) {
+                        shelter.admitPet(new RoboticDog(petName, 2, 2, 2, 5, 2));
+                    } else {
+                        shelter.admitPet(new OrganicDog(petName, 4, 6, 7, 1));
+                    }
+                    break;
 
 
                 case "clean cage":
@@ -70,10 +78,18 @@ public class VirtualPetApplication {
                     shelter.maintainRobots();
                     break;
 
+                case "clean organic dog cage":
+                    organDog.cleanCage();
+                    break;
+
+                case "clean organic cat litter box":
+                    organCat.cleanLitterBox();
+                    break;
+
                     case "interact":
                     System.out.println("Enter the name of the pet you want to interact with.");
                     String name = input.nextLine();
-                    System.out.println("What would you like to do with the pet? feed, etc.");
+                    System.out.println("What would you like to do with the pet? Feed, play, or water.");
                     String selection = input.nextLine();
                     if (selection.equalsIgnoreCase("feed")) {
                         shelter.findPetByName(name).feed();
@@ -86,8 +102,8 @@ public class VirtualPetApplication {
             }
             shelter.tickAll();
         }
-//        if (userInput.equalsIgnoreCase("quit")) {
-//            System.out.println("Thanks for playing!");
-//        }
+        if (userInput.equalsIgnoreCase("quit")) {
+            System.out.println("Thanks for playing!");
+        }
     }
 }

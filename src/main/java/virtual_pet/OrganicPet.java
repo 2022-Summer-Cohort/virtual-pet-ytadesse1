@@ -4,8 +4,8 @@ public abstract class OrganicPet extends VirtualPet {
 
     public int cleanliness;
 
-    public OrganicPet(String name, int hungerLvl, int urgeToSteal, int thirstLvl, int boredomLvl, int cleanliness) {
-        super(name, hungerLvl, urgeToSteal, thirstLvl, boredomLvl);
+    public OrganicPet(String name, int hungerLvl, int thirstLvl, int boredomLvl, int cleanliness) {
+        super(name, hungerLvl, thirstLvl, boredomLvl);
         this.cleanliness = cleanliness;
     }
 
@@ -24,8 +24,6 @@ public abstract class OrganicPet extends VirtualPet {
     @Override
     public void tick() {
         super.tick();
-        cleanliness++;
+        cleanliness--;
     }
-
-    public abstract void showStatus();
 }
